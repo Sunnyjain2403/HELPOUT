@@ -14,7 +14,7 @@ const { static } = require('express')
 //const admin=require('./routes/admin')
 
 //connect to db
-const url = process.env.MONGO_URL || mongodb:/localhost:27017/users
+const url = process.env.MONGO_URL
 mongoose.connect(url, { useNewUrlParser: true }, () => {
   console.log('connect')
 })
