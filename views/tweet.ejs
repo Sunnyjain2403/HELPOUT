@@ -1,0 +1,57 @@
+<%- include('partials/adminheader') %>
+<div class="container" style="width:60%;">
+  <div class="row">
+    <div class="panel panel-default">
+      <div class="panel-heading"><a href="<%= tweet._id %>" class="pull-right">View</a>
+        <% if(!tweet.anonymous){ %>
+        <a style="text-decoration: none;color:black;" href="/profile/<%= tweet.username %>">
+          <h4><%= tweet.username   %></h4>
+        </a>
+        <% } %>
+        <% if(tweet.anonymous){ %>
+        <h4>Anonymous</h4>
+        <% } %>
+        <small
+          style="color:darkgray;"><%= JSON.stringify(tweet._id.getTimestamp()).slice(1,11)  %>|<%= JSON.stringify(tweet._id.getTimestamp()).slice(12,17)  %></small>
+      </div>
+      <div class="panel-body">
+
+        <hr>
+
+        <p><%= tweet.content %></p>
+
+        <hr>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+
+    <div class="col-sm-4" style="overflow:hidden;">
+      <h4>Likes(<%= tweet.like.length %>)</h4>
+      <% tweet.like.forEach((e)=>{%>
+      <div style="background-color:#D3D3D3;padding:5px;border-radius:10px ;">
+        <h6><%= e %></h6>
+      </div>
+      <br>
+      <%})%>
+    </div>
+
+    <div class="col-sm-8" style="overflow: hidden;">
+      <h4>Comments(<%= tweet.comment.length %>)</h4>
+      <% comment.forEach((e)=>{%>
+      <div style="background-color:#D3D3D3;padding:10px;border-radius:10px ;">
+        <a style="text-decoration: none;color:black;" href="/profile/<%= e.username %>">
+          <small><b><%= e.username %></b></small></a>
+        <p><%= e.comment %></p>
+      </div>
+      <br>
+      <%})%>
+
+
+    </div>
+  </div>
+</div>
+
+</body>
+
+</html>

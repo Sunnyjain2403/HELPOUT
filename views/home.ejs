@@ -1,0 +1,116 @@
+
+						<%- include('partials/homepageheader')  %>
+						
+						<!-- /top nav -->
+					  
+						<div class="padding">
+							<div class="full col-sm-9">
+							  
+								<!-- content -->                      
+								<div class="row">
+								  
+				
+								 <div class="col-sm-5">
+								   
+
+									<div class="panel panel-default" id="userpanel"  style="display: none;">
+										 
+										
+										
+										<div class="panel-thumbnail" ></div>
+										<div class="panel-body">
+										<div id="search"  class="user-box" id="user-box"></div>
+										  
+										</div>
+									  </div>
+
+
+									  <div class="panel panel-default">
+										 
+										
+
+										<div class="panel-thumbnail" ></div>
+										<div class="panel-body">
+										  
+										  <div class="col-sm-8">
+										   <p>followers:<%= userinfo.followers.length %></p>
+										  <p>follow:<%= userinfo.follow.length %></p>
+										  <p>username:<%= userinfo.username %></p>
+										  <p>DOB:<%= userinfo.dateofbirth %></p>
+										  <p>BIO:<%= userinfo.bio %></p>
+										</div>
+										<div class="col-sm-4">
+										   <img src="\upload/<%= userinfo.upload %>"  onerror="this.onerror=null; this.src='\img/defaultprofile2.jpg'" style="height: 120px;width:120px;">
+										  </div>	
+										
+										</div>
+									  </div>
+
+
+
+										
+								   
+								  </div>
+								  
+								  
+								  <div class="col-sm-7">
+									   
+										 
+							
+							  
+									 
+									
+								<% tweets.forEach( (tweet)=>{ %>
+									   <div class="panel panel-default">
+										 <div class="panel-heading"><a href="tweet/<%= tweet._id %>" class="pull-right">View</a> 
+											<% if(!tweet.anonymous){ %><a href="profile/<%= tweet.username %>"><h4><%= tweet.username   %>
+										</h4></a><% } %>
+										<% if(tweet.anonymous){ %><h4>Anonymous
+										</h4><% } %>
+
+										<small  style="color:darkgray;"><%= JSON.stringify(tweet._id.getTimestamp()).slice(1,11)  %>|<%= JSON.stringify(tweet._id.getTimestamp()).slice(12,17)  %></small></div>
+										  <div class="panel-body">
+										
+											<hr>
+											
+					                             <p><%= tweet.content %></p>
+											
+											<hr>
+											<form>
+												<div class="input-group">
+											  		<div class="input-group-btn">
+											  
+												  
+												<% const status=tweet.like.find((e)=>{return e==username})
+												   if(status){
+												%>																	
+												<i onclick="toggling(this)"  id="<%=tweet._id%>" class="fa fa-thumbs-up blue"></i>
+												 <% } else { %>
+													<i onclick="toggling(this)" id="<%=tweet._id%>" class="fa fa-thumbs-up"></i>
+												<% }	%>
+
+											  
+											  </div>
+											  
+											  <input class="form-control"  placeholder="Add a comment.." id="<%=tweet._id%>commentinput" type="text">
+											  <br><br>
+											  <input type="button"  id="<%= tweet._id %>" class="commentbutton" value="comment"></input>
+											</div>
+										</form>
+											
+										  </div>
+									   </div>
+									   <% }) %>
+
+					
+									
+								  </div>
+							   </div>
+							   
+								
+							  
+							</div>
+						</div>
+					</div>
+				<%- include('partials/footer') %>	
+			

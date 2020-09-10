@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <style>
+    .fa {
+      font-size: 50px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .blue {
+      color: blue;
+    }
+
+    .user {
+      padding: 15px;
+      background-color: white;
+    }
+
+    .user-box {
+      overflow: scroll;
+      height: 500px;
+    }
+
+    .followbutton {
+      position: relative;
+      left: 350px;
+      bottom: 40px;
+    }
+  </style>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <meta charset="utf-8" />
+  <title>NETWORK</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <link href="css/bootstrap.css" rel="stylesheet" />
+
+  <link href="css/facebook.css" rel="stylesheet" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <div class="box">
+      <div class="row row-offcanvas row-offcanvas-left">
+        <!-- main right col -->
+        <div class="column col-sm-12 col-xs-12" id="main">
+          <!-- top nav -->
+          <div class="navbar navbar-blue navbar-static-top">
+            <!--<nav class="collapse navbar-collapse" role="navigation">-->
+            <form class="navbar-form navbar-left">
+              <div class="input-group input-group-sm" style="max-width: 360px;">
+                <input class="form-control" placeholder="Search" name="srch-term" id="searchstring" type="text" />
+                <div class="input-group-btn">
+                  <input type="button" class="btn btn-default" value="search" id="searchbutton" type="submit" />
+                </div>
+              </div>
+            </form>
+
+            <ul class="nav navbar-nav">
+              <li>
+                <a href="#"><i class="glyphicon glyphicon-home"></i> Home</a>
+              </li>
+              <li>
+                <a href="#postModal" role="button" data-toggle="modal"><i class="glyphicon glyphicon-plus"></i>
+                  Post</a>
+              </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li class="dropdown">
+                <a href="/profile/<%= username %>"><i class="glyphicon glyphicon-user"></i> profile</a>
+
+              </li>
+            </ul>
+            </nav>
+          </div>

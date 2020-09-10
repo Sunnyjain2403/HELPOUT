@@ -1,0 +1,56 @@
+<%- include('partials/adminheader') %>
+<div style="
+    background-color:#D3D3D3;
+    
+    position: relative;
+        left:15%;
+        top: 100px;
+    width: 70%;
+    ">
+
+
+  <div style="height: 100px;background-color: lightslategray;">
+    <img src="\\upload/<%= user.upload %>" onerror="this.onerror=null; this.src='\\img/defaultprofile2.jpg'"
+      style="height: 10%;width:15%;position:absolute;right:5%;top:5%;"></img>
+  </div>
+  <div style="margin: 20px;color: black
+      ">
+
+    <h4><b><%= user.username  %></b></h4>
+
+    D.O.B:-<%= user.dateofbirth  %>
+    <br>
+    Bio:-<%= user.bio  %>
+    <br>
+    followers-<%= user.followers.length %>
+    <br>
+    following-<%= user.followers.length %>
+    <br><br>
+
+  </div>
+  <% tweets.forEach( (tweet)=>{ if(tweet.username===username||(!tweet.anonymous)){ %>
+  <div class="panel panel-default" style="margin: 20px;">
+    <div class="panel-heading"><a href="/tweet/<%= tweet._id %>" class="pull-right">View all</a>
+      <% if(!tweet.anonymous){%> <h4><%= tweet.username  %></h4>
+      <% } %>
+      <% if(tweet.anonymous){%> <h4>Anonymous</h4>
+      <% } %>
+    </div>
+    <div class="panel-body">
+
+      <hr>
+
+      <p><%= tweet.content %></p>
+
+      <hr>
+    </div>
+  </div>
+  <br>
+
+  <% }}) %>
+
+
+</div>
+</body>
+
+</html>
