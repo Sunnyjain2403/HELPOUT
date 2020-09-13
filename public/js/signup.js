@@ -1,19 +1,22 @@
+//const { get } = require("../../../scems");
 
 let form = document.querySelector('form')
 
 document.querySelector('form').addEventListener("submit", function (e) {
   $("#submit").attr('disabled', true)
   e.preventDefault();
-
   let formdata = new FormData(form)
+
+
+
   $.post("/signup",
     {
       email: formdata.get('email'),
       username: formdata.get('username'),
       dateofbirth: formdata.get('dateofbirth'),
       bio: formdata.get('bio'),
-      password: formdata.get('password')
-
+      password: formdata.get('password'),
+      confirmpassword: formdata.get('confirmpassword')
     },
     function (data, status) {
 

@@ -19,6 +19,7 @@ module.exports = {
         try {
             const salt = await genSalt(8)
             const hashpassword = await hash(req.body.password, salt)
+
             const newuser = new user({
                 email: req.body.email,
                 username: req.body.username,
@@ -50,8 +51,13 @@ module.exports = {
             const error3 = validationResult(req)
 
             if (error3.errors.length != 0) {
-                console.log(error3)
                 return res.send(error3)
+            }
+
+            // console.log(req.body.confirmpassword)
+            if (req.body.password != req.body.confirmpassword) {
+                const error4 = { errors: [{ 'msg': 'password does not match' }] }
+                return res.send(error4)
             }
 
 
