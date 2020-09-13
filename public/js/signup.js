@@ -2,6 +2,7 @@
 let form = document.querySelector('form')
 
 document.querySelector('form').addEventListener("submit", function (e) {
+  $("#submit").attr('disabled', true)
   e.preventDefault();
 
   let formdata = new FormData(form)
@@ -21,13 +22,14 @@ document.querySelector('form').addEventListener("submit", function (e) {
         $('#error').html('</div><div class="alert alert-danger" role="alert">'
           + data.errors[0].msg +
           '</div>');
+        $("#submit").attr('disabled', false)
       }
       else {
 
         $('#error').html('</div><div class="alert alert-success" role="alert">'
           + "user successfully registered!!!!now you can login" +
           '</div>');
-        $("#submit").attr('disabled', true)
+
       }
 
     });
