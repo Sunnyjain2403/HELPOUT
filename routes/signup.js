@@ -22,7 +22,7 @@ module.exports = {
             const newuser = new user({
                 email: req.body.email,
                 username: req.body.username,
-                password: req.body.password,
+                password: hashpassword,
                 dateofbirth: req.body.dateofbirth,
                 bio: req.body.bio,
                 follow: [req.body.username],
