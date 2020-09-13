@@ -22,12 +22,9 @@ module.exports = {
             const newuser = new user({
                 email: req.body.email,
                 username: req.body.username,
-
+                password: req.body.password,
                 dateofbirth: req.body.dateofbirth,
-
                 bio: req.body.bio,
-
-                password: hashpassword,
                 follow: [req.body.username],
                 followers: []
             }
@@ -52,15 +49,14 @@ module.exports = {
 
             const error3 = validationResult(req)
 
-            if (error3) {
+            if (error3.errors.length != 0) {
+                console.log(error3)
                 return res.send(error3)
             }
 
-            console.log('comment')
+
             await newuser.save()
-
-
-
+            return res.send({ errors: [] });
         }
 
         catch (e) {

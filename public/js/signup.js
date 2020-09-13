@@ -22,14 +22,17 @@ document.querySelector('form').addEventListener("submit", function (e) {
           + data.errors[0].msg +
           '</div>');
       }
+      else {
 
-
+        $('#error').html('</div><div class="alert alert-success" role="alert">'
+          + "user successfully registered!!!!now you can login" +
+          '</div>');
+        $("#submit").attr('disabled', true)
+      }
 
     });
-  $('#error').html('</div><div class="alert alert-success" role="alert">'
-    + "user successfully registered!!!!" +
-    '</div>');
-  window.location.href = "login"
+
+
 
 
 
